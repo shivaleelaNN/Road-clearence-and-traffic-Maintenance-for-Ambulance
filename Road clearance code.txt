@@ -1,0 +1,226 @@
+//Define pins for traffic lights in Lane A
+const int R1 = 2;
+const int Y1 = 3;
+const int G1 = 4;
+
+// Define pins for traffic lights in Lane B
+const int R2 = 5;
+const int Y2 = 6;
+const int G2 = 7;
+
+// Define pins for traffic lights in Lane C
+const int R3 = 8;
+const int Y3 = 9;
+const int G3 = 10;
+
+// Define pins for traffic lights in Lane D
+const int R4= 11;
+const int Y4 = 12;
+const int G4 = 13; 
+
+const int soundSensorPin = A0;  // Analog pin for the sound sensor
+const int ambulanceSoundThreshold = 50;  // Adjust this threshold based on your sound sensor and environment
+
+
+void setup() {
+  // Set traffic light pins for Lane A as OUTPUT
+  Serial.begin(9600);
+ pinMode(soundSensorPin, INPUT);
+
+  pinMode(R1, OUTPUT);
+  pinMode(Y1, OUTPUT);
+  pinMode(G1, OUTPUT);
+
+  // Set traffic light pins for Lane B as OUTPUT
+  pinMode(R2, OUTPUT);
+  pinMode(Y2, OUTPUT);
+  pinMode(G2, OUTPUT);
+
+  // Set traffic light pins for Lane C as OUTPUT
+  pinMode(R3, OUTPUT);
+  pinMode(Y3, OUTPUT);
+  pinMode(G3, OUTPUT);
+
+  // Set traffic light pins for Lane D as OUTPUT
+  pinMode(R4, OUTPUT);
+  pinMode(Y4, OUTPUT);
+  pinMode(G4, OUTPUT);
+}
+
+void loop() {
+  
+int soundLevel = analogRead(soundSensorPin);
+Serial.println(soundLevel);
+ // Lane A: 
+  digitalWrite(R1, LOW);
+  digitalWrite(Y1, HIGH);
+  digitalWrite(G1, LOW);
+  delay(1000);
+
+  // 
+  digitalWrite(R1, HIGH);
+  digitalWrite(Y1, LOW);
+  digitalWrite(G1, LOW);
+
+    // 
+  digitalWrite(R2, LOW);
+  digitalWrite(Y2, LOW);
+  digitalWrite(G2, HIGH);
+  delay(5000);
+
+
+  // 
+  digitalWrite(R3, HIGH);
+  digitalWrite(Y3, LOW);
+  digitalWrite(G3, LOW);
+
+  // 
+  digitalWrite(R4, HIGH);
+  digitalWrite(Y4, LOW);
+  digitalWrite(G4, LOW);
+
+ // Lane B
+  digitalWrite(R1, HIGH);
+  digitalWrite(Y1, LOW);
+  digitalWrite(G1, LOW);
+
+  // 
+  digitalWrite(R2, LOW);
+  digitalWrite(Y2, HIGH);
+  digitalWrite(G2, LOW);
+  delay(1000);
+
+  // 
+  digitalWrite(R2, HIGH);
+  digitalWrite(Y2, LOW);
+  digitalWrite(G2, LOW);
+
+  //
+  digitalWrite(R3, LOW);
+  digitalWrite(Y3, LOW);
+  digitalWrite(G3, HIGH);
+  delay(5000);
+
+  // 
+  digitalWrite(R4, HIGH);
+  digitalWrite(Y4, LOW);
+  digitalWrite(G4, LOW);
+
+// Lane C
+  digitalWrite(R1, HIGH);
+  digitalWrite(Y1, LOW);
+  digitalWrite(G1, LOW);
+
+  // 
+  digitalWrite(R2, HIGH);
+  digitalWrite(Y2, LOW);
+  digitalWrite(G2, LOW);
+
+  // 
+  digitalWrite(R3, LOW);
+  digitalWrite(Y3, HIGH);
+  digitalWrite(G3, LOW);
+  delay(1000);
+
+  // 
+  digitalWrite(R3, HIGH);
+  digitalWrite(Y3, LOW);
+  digitalWrite(G3, LOW);
+
+  //
+  digitalWrite(R4, LOW);
+  digitalWrite(Y4, LOW);
+  digitalWrite(G4, HIGH);
+  delay(5000);
+
+
+
+  // Lane D
+  digitalWrite(R1, HIGH);
+  digitalWrite(Y1, LOW);
+  digitalWrite(G1, LOW);
+
+  // 
+  digitalWrite(R2, HIGH);
+  digitalWrite(Y2, LOW);
+  digitalWrite(G2, LOW);
+
+  // 
+  digitalWrite(R3, HIGH);
+  digitalWrite(Y3, LOW);
+  digitalWrite(G3, LOW);
+
+  // 
+  digitalWrite(R4, LOW);
+  digitalWrite(Y4, HIGH);
+  digitalWrite(G4, LOW);
+  delay(1000);
+
+  // 
+  digitalWrite(R4, HIGH);
+  digitalWrite(Y4, LOW);
+  digitalWrite(G4, LOW);
+
+
+  // Lane A: Red light (stop)
+  digitalWrite(R1, LOW);
+  digitalWrite(Y1, LOW);
+  digitalWrite(G1, HIGH);
+  delay(5000);
+
+  // Lane B: Green light (go)
+  digitalWrite(R1, LOW);
+  digitalWrite(Y1, HIGH);
+  digitalWrite(G1, LOW);
+  delay(1000);
+
+  // Lane C: Yellow light (slow down)
+  digitalWrite(R2, HIGH);
+  digitalWrite(Y2, LOW);
+  digitalWrite(G2, LOW);
+
+  // Lane D: Green light (go)
+  digitalWrite(R3, HIGH);
+  digitalWrite(Y3, LOW);
+  digitalWrite(G3, LOW);
+
+   // Lane D: Green light (go)
+  digitalWrite(R4, HIGH);
+  digitalWrite(Y4, LOW);
+  digitalWrite(G4, LOW);
+//int soundLevel = analogRead(soundSensorPin);
+
+  if (soundLevel > ambulanceSoundThreshold) {
+    Serial.println("test");
+    // Ambulance detected, take appropriate action
+  Serial.println("Ambulance detected! Implement your traffic maintenance logic here.");
+  digitalWrite(R1, LOW);
+  digitalWrite(Y1, HIGH);
+  digitalWrite(G1, LOW);
+  delay(1000);
+
+  // 
+  digitalWrite(R1, HIGH);
+  digitalWrite(Y1, LOW);
+  digitalWrite(G1, LOW);
+
+    // 
+  digitalWrite(R2, LOW);
+  digitalWrite(Y2, LOW);
+  digitalWrite(G2, HIGH);
+  delay(5000);
+
+
+  // 
+  digitalWrite(R3, HIGH);
+  digitalWrite(Y3, LOW);
+  digitalWrite(G3, LOW);
+
+  // 
+  digitalWrite(R4, HIGH);
+  digitalWrite(Y4, LOW);
+  digitalWrite(G4, LOW);
+
+  }
+  
+}
